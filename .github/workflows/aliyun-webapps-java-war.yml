@@ -55,6 +55,10 @@ jobs:
           name: payment-rotec
           path: '${{ github.workspace }}/target/*.jar'  # 修改为jar包路径
 
+      - name: check upload
+        run: |
+            echo "Workspace Directory: $GITHUB_WORKSPACE"
+            ls -la $GITHUB_WORKSPACE/target
 
   deploy:
     permissions:
