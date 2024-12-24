@@ -1,0 +1,2 @@
+traceIdConsumer=com.rochetec.paymentrochetec.Filter.TraceIdConsumerFilter
+traceIdProvider=com.rochetec.paymentrochetec.Filter.TraceIdProviderFilter
