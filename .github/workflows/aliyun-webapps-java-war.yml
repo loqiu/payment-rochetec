@@ -71,12 +71,6 @@ jobs:
     needs: build
 
     steps:
-      - name: Display structure of downloaded files
-        run: ls -la
-      - name: check upload
-        run: |
-          echo "Workspace Directory: $GITHUB_WORKSPACE"
-          ls -la $GITHUB_WORKSPACE/target
       - name: Download artifact from build job
         uses: actions/download-artifact@v4.1.8
         with:
