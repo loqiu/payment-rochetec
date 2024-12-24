@@ -76,14 +76,19 @@ jobs:
         with:
           name: java-app
 
-      - name: Shutdown payment-rotec.service
+      - name: Stop payment-rotec.service if running
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            systemctl stop payment-rotec.service
+            if systemctl is-active --quiet payment-rotec.service; then
+              echo "payment-rotec is running, stopping it..."
+              systemctl stop payment-rotec.service
+            else
+              echo "payment-rotec is NOT running (or not loaded), skip stopping."
+            fi
 
       # 添加清理步骤（放在部署war包之前）
       - name: Clean before deploy
