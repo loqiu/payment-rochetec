@@ -134,6 +134,36 @@
             <version>3.3.1</version>
         </dependency>
     </dependencies>
+    <repositories>
+        <repository>
+            <id>nexus-releases</id>
+            <name>nexus-rotec-private</name>
+            <url>http://8.208.90.124:8283/repository/maven-releases/</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <checksumPolicy>warn</checksumPolicy>
+            </snapshots>
+            <layout>default</layout>
+        </repository>
+        <repository>
+            <id>nexus-snapshots</id>
+            <name>nexus-rotec-private</name>
+            <url>http://8.208.90.124:8283/repository/maven-snapshots/</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <checksumPolicy>warn</checksumPolicy>
+            </snapshots>
+            <layout>default</layout>
+        </repository>
+    </repositories>
     <profiles>
         <profile>
             <id>dev</id>
