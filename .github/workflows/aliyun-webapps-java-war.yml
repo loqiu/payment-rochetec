@@ -48,14 +48,18 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean package -s ${{ github.workspace }}/settings.xml -Pprod
-        
+      - name: check upload
+        run: |
+          echo "Workspace Directory: $GITHUB_WORKSPACE"
+          ls -la $GITHUB_WORKSPACE
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: java-app
           path: '${{ github.workspace }}/target/*.jar'  # 修改为jar包路径
 
-      - name: check upload
+      - name: check upload-2
         run: |
             echo "Workspace Directory: $GITHUB_WORKSPACE"
             ls -la $GITHUB_WORKSPACE/target
@@ -69,8 +73,12 @@ jobs:
     steps:
       - name: Display structure of downloaded files
         run: ls -la
+      - name: check upload
+        run: |
+          echo "Workspace Directory: $GITHUB_WORKSPACE"
+          ls -la $GITHUB_WORKSPACE/target
       - name: Download artifact from build job
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4.1.8
         with:
           name: java-app
 
