@@ -14,7 +14,16 @@ public class KafkaConsumerServiceImpl implements KafkaConsumerService {
     private static final Logger logger = LogManager.getLogger(KafkaConsumerServiceImpl.class);
 
     @KafkaListener(topics = KafkaTopicConstant.QUICKSTART_EVENTS, groupId = "${spring.kafka.consumer.group-id}")
-    public void listen(String message) {
+    public void listen_QUICKSTART_EVENTS(String message) {
+        try {
+            logger.info("Received message: {}", message);
+            // 消息处理逻辑
+        } catch (Exception e) {
+            logger.error("Error processing message: {}", message, e);
+        }
+    }
+    @KafkaListener(topics = KafkaTopicConstant.OPENAI_MESSAGES_DEV, groupId = "${spring.kafka.consumer.group-id}")
+    public void listen_OPENAI_MESSAGES_DEV(String message) {
         try {
             logger.info("Received message: {}", message);
             // 消息处理逻辑
